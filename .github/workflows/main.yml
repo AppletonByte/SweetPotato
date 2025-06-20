@@ -1,0 +1,26 @@
+name: Build SweetPotato (x86)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3.1
+
+    - name: Build Solution (x86)
+      run: msbuild SweetPotato.sln /p:Configuration=Release /p:Platform=x86
+
+    - name: Upload x86 Binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: SweetPotato_x86.exe
+        path: SweetPotato\Release\SweetPotato_86.exe
