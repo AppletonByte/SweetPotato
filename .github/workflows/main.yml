@@ -20,7 +20,7 @@ jobs:
       run: msbuild SweetPotato.sln /p:Configuration=Release /p:Platform=x86
 
     - name: Upload x86 Binary
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: SweetPotato_x86.exe
         path: SweetPotato\Release\SweetPotato_86.exe
